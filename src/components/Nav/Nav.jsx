@@ -1,9 +1,9 @@
 import SearchBar from "../SearchBar/SearchBar";
 
-export default function Nav() {
+export default function Nav({onSearch}) {
     return (
         <>
-            <SearchBar onSearch={(characterID) => window.alert(characterID)} />
+            <SearchBar onSearch={onSearch} />
         </>
     );
  }

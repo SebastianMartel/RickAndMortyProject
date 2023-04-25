@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const SearchBarDiv = styled.div `
@@ -41,10 +42,18 @@ const InputText = styled.input `
 
 
 export default function SearchBar({onSearch}) {
+
+   let [id, setId] = useState('')
+
+   const handleChange = (event) => {
+      const newId = event.target.value
+      setId(newId)
+   }
+
    return (
       <SearchBarDiv>
-         <InputText type='search' />
-         <AgregarButton onClick={onSearch}>Add</AgregarButton>
+         <InputText type='search' onChange = {handleChange} value = {id} /* necessary to synchronize both id (state id and current element value)*//>
+         <AgregarButton onClick={() => {onSearch(id); setId('')}}>Add</AgregarButton>
       </SearchBarDiv>
    );
 }

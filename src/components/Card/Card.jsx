@@ -40,10 +40,10 @@ const Text = styled.p `
    margin: 5px;
 `
 
-export default function Card({id,name,status,species,gender,origin, image, onClose}) {
+export default function Card({id, name, status, species, gender, origin, image, onClose}) {
    return (
       <CardBox>
-         <CloseButton onClick={onClose}>X</CloseButton>
+         <CloseButton onClick={() => {onClose(id)}}>x</CloseButton>
          <CardBoxImg src={image} alt='' />
          <Text>{name}</Text>
          <Text>{species}</Text>

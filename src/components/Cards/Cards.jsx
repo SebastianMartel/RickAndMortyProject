@@ -8,22 +8,22 @@ flex-direction: row;
 justify-content: space-between;
 `
 
-export default function Cards({characters}) {
+export default function Cards({characters, onClose}) {
    return (
       <CardsContainer>
          {
-         characters.map(({id, name, status, species, gender, origin, image}) => { // unique parameter with each character properties of the characters array.
+         characters.map(({id, name, status, species, gender, origin, image}, index) => { // unique parameter with each character properties of the characters array.
             return (
                <Card // sort of redefining properties values. Since, in Card we take only Rick properties values.  Here, I take characters as parameter to access its properties.
-                  key = {id} // key is being asked.
-                  id = {id}
+                  // key is being asked.
+                  key = {index}
                   name = {name}
                   status = {status}
                   species = {species}
                   gender = {gender}
                   origin = {origin.name}
                   image = {image}
-                  onClose={() => window.alert('Emulamos que se cierra la card')}
+                  onClose={onClose}
                />
             )
          })
