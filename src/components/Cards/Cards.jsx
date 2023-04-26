@@ -1,6 +1,7 @@
 import Card from '../Card/Card';
 import styled from 'styled-components';
 
+
 const CardsContainer = styled.div `
 display: flex;
 flex-wrap: wrap;
@@ -24,7 +25,7 @@ export default function Cards({characters, onClose}) {
                   gender = {gender}
                   origin = {origin.name}
                   image = {image}
-                  onClose={onClose}
+                  onClose = {onClose}
                />
             )
          })

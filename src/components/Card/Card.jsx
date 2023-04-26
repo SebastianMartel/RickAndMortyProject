@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const CardBox = styled.div `
    display: flex;
@@ -44,8 +45,10 @@ export default function Card({id, name, status, species, gender, origin, image, 
    return (
       <CardBox>
          <CloseButton onClick={() => {onClose(id)}}>x</CloseButton>
-         <CardBoxImg src={image} alt='' />
-         <Text>{name}</Text>
+         <CardBoxImg src = {image} alt = {`picture of ${name}`} />
+         <NavLink to = {`/detail/${id}`}> {/*It's changing the style of the affected element (Text) */}
+            <Text>{name}</Text>
+         </NavLink>
          <Text>{species}</Text>
          <Text>{gender}</Text>
       </CardBox>
