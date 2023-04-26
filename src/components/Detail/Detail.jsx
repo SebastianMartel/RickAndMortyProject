@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom" // access to the url dynamic parameter. Needs to match the dynamic parameter.
 import { useState , useEffect} from "react"
 
 export default function Detail () {

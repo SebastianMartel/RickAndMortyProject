@@ -1,18 +1,32 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import axios from 'axios';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import Nav from './components/Nav/Nav';
 import Cards from './components/Cards/Cards';
 import About from './components/About/About'
 import Detail from './components/Detail/Detail'
+import Forms from './components/Forms/Forms';
 
 
 function App() {
 
    const [characters, setCharacters] = useState([])
 
+   const [access, setAccess] = useState(false)
+
+   const email = 'email@email.com'
+   const password = 'password99'
+   const Navigate = useNavigate()
+   const location = useLocation()
+
+   const login = (userData) => {
+      if (userData.email === email && userData.password === password) {
+         setAccess(true);
+         Navigate('/home')
+      }
+   }
 
    const onClose = (id) => {
       const newCharacters = characters.filter((character) => character.id !== Number(id))
@@ -34,10 +48,17 @@ function App() {
        });
    }
 
+   useEffect(() => {
+      !access && Navigate('/')
+   }, [access])
+
    return (
       <div className='App'>
-         <Nav onSearch = {onSearch}/>
+         {
+            location.pathname !== '/' && <Nav onSearch = {onSearch}/>
+         }
          <Routes> {/* Contains all the routes*/} {/* And Route indicates in what path the element should be rendered*/}
+            <Route path = '/' element = {<Forms login = {login}/>}/>
             <Route path = '/home' element = {<Cards characters = {characters} id = {characters.id} onClose = {onClose}/>}/>
             <Route path = '/about' element = {<About/>}/>
             <Route path = '/detail/:id' element = {<Detail characters = {characters}/>}/> {/*dynamic path will always match the path that is being used, and so, it will always render the elment.*/}
