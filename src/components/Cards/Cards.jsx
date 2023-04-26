@@ -17,6 +17,7 @@ export default function Cards({characters, onClose}) {
                <Card // sort of redefining properties values. Since, in Card we take only Rick properties values.  Here, I take characters as parameter to access its properties.
                   // key is being asked.
                   key = {index}
+                  id = {id}
                   name = {name}
                   status = {status}
                   species = {species}
