@@ -4,11 +4,9 @@
 .App {
    text-align: center;
    font-family: 'Archivo Black', sans-serif;
-
 }
 
 body {
-   background-image: url('https://i.pinimg.com/originals/94/a4/4e/94a44e36e36278d416c029ad1a4449ea.jpg');
    background-size: cover;
    font-family: 'Archivo Black', sans-serif;
 }
