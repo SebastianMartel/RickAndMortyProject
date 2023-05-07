@@ -1,0 +1,24 @@
+/* .cardImg {
+   display: flex;
+   max-width: 250px;
+   align-items: center;
+   object-fit: cover;
+   border: 7px solid;
+   border-radius: 13px;
+   border-image-source: url('../../Img/HolographicSilverFoil.jpg');
+   border-image-width: 10px;
+   border-image-slice: 1
+}
+
+:local(.cardImg) {
+   display: flex;
+   max-width: 250px;
+   align-items: center;
+   object-fit: cover;
+   border: 7px solid;
+   border-radius: 13px;
+   border-image-source: url('../../Img/HolographicSilverFoil.jpg');
+   border-image-width: 10px;
+   border-image-slice: 1
+ }
+  */

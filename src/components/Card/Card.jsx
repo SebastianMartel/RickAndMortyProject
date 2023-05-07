@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import cardBorderImg from "../../Img/HolographicSilverFoil.jpg"
 
 const CardBox = styled.div `
    display: flex;
@@ -18,7 +19,7 @@ const CardBoxImg = styled.img `
    object-fit: cover;
    border: 7px solid;
    border-radius: 13px;
-   border-image-source: url('https://t4.ftcdn.net/jpg/04/61/52/17/360_F_461521748_EDK7HRYIMKKFMY5QrWz1lcDNaIBYw0s9.jpg');
+   border-image-source: url(${cardBorderImg});
    border-image-width: 10px;
    border-image-slice: 1
 `
