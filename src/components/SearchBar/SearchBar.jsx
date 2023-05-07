@@ -12,7 +12,7 @@ const SearchBarDiv = styled.div `
    border: none;
    border-radius: 10px;
 ` 
-const AgregarButton = styled.button `
+const AddButton = styled.button `
    background-color: #1CD777;
    font-family: 'Archivo Black', sans-serif;
    font-size: 1.5rem;
@@ -53,7 +53,7 @@ export default function SearchBar({onSearch}) {
    return (
       <SearchBarDiv>
          <InputText type='search' onChange = {handleChange} value = {id} /* necessary to synchronize both id (state id and current element value)*//>
-         <AgregarButton onClick={() => {onSearch(id); setId('')}}>Add</AgregarButton>
+         <AddButton onClick={() => {onSearch(id); setId('')}}>Add</AddButton>
       </SearchBarDiv>
    );
 }

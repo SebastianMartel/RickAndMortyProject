@@ -10,7 +10,7 @@ export default function Nav({onSearch}) {
                 <button>Home</button>
             </NavLink>
             <NavLink to = '/about'>
-                <button>About</button>
+                <button>About Me</button>
             </NavLink>
         </>
     );

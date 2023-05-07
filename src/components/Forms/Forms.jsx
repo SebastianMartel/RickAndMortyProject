@@ -41,7 +41,7 @@ export default function Forms ({login}) {
                 {
                     errors.password && <p>{errors.password}</p>
                 }
-            <button>Submit</button>
+            <button>Log in</button>
         </form>
     )
 }
