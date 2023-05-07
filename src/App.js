@@ -28,8 +28,10 @@ function App() {
       }
    }
 
+   // const logout = () => {} LogOut
+
    const onClose = (id) => {
-      const newCharacters = characters.filter((character) => character.id !== Number(id))
+      const newCharacters = characters.filter((character) => character.id !== Number(id)) // i parameter can be used to keep track of the current element being iterated. So that it only removes the current card and not ALL that matches the id (doesn't work as expected).
       setCharacters(newCharacters)
    }
 
@@ -50,7 +52,7 @@ function App() {
 
    useEffect(() => {
       !access && Navigate('/')
-   }, [access])
+   }, [access, Navigate]) // added 'Navigate' to the array.
 
    return (
       <div className='App'>
