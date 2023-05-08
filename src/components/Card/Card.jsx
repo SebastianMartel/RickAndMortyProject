@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import cardBorderImg from "../../Img/HolographicSilverFoil.jpg"
+import { addFav, removeFav } from "../../Redux/actions";
+import { connect } from "react-redux";
+import { useState, useEffect} from "react";
 
 const CardBox = styled.div `
    display: flex;
@@ -42,10 +45,34 @@ const Text = styled.p `
    margin: 5px;
 `
 
-export default function Card({id, name, status, species, gender, origin, image, onClose}) {
+
+export function Card({id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavourites}) {
+
+   const [isFav,setIsFav] = useState(false)
+   
+   const handleFavourite = () => {
+      if (isFav) {
+         setIsFav(false);
+         removeFav(id)
+      } else if (!isFav) {
+         setIsFav(true);
+         addFav({id, name, status, species, gender, origin, image, onClose})
+      }
+   }
+
+   useEffect(() => {
+      myFavourites.forEach((fav) => {
+         if (fav.id === id) {
+            setIsFav(true);
+         }
+      });
+   }, [myFavourites]);
+
    return (
       <CardBox>
-         <CloseButton onClick={() => {onClose(id)}}>x</CloseButton>
+
+         <button onClick = {handleFavourite}>{isFav ? '❤️' : '🤍'}</button>
+         <CloseButton onClick = {() => {onClose(id)}}>x</CloseButton>
          <CardBoxImg src = {image} alt = {`picture of ${name}`} />
          <NavLink to = {`/detail/${id}`}> {/*It's changing the style of the affected element (Text) */}
             <Text>{name}</Text>
@@ -55,3 +82,29 @@ export default function Card({id, name, status, species, gender, origin, image, 
       </CardBox>
    );
 }
+
+// this creates new props (addFav and removeFav) which are functions dispatch actions.
+// dispatches action creators.
+
+const mapDispatchToProps = (dispatch) => {   
+   return {
+      addFav: (char) => {dispatch(addFav(char))},
+      removeFav: (id) => {dispatch(removeFav(id))}
+   }
+}
+
+
+// has access to the global redux state because of connect().
+
+const mapStateToProps = (state) => {
+   return {
+      myFavourites: state.myFavourites
+   }
+}
+
+// connectes the dispatched actions with the component who needs it, making it a prop of that.
+
+export default connect(
+   mapStateToProps,
+   mapDispatchToProps
+)(Card)
