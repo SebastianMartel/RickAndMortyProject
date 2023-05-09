@@ -66,7 +66,7 @@ export function Card({id, name, status, species, gender, origin, image, onClose,
             setIsFav(true);
          }
       });
-   }, [myFavourites]);
+   }, [myFavourites]); // shall include id?
 
    return (
       <CardBox>
