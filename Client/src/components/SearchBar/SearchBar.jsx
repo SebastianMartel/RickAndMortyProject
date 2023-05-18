@@ -25,14 +25,13 @@ const AddButton = styled.button `
       background-color: #139451;
    }
 `
-
 const InputText = styled.input `
    background-color: biege;
    font-family: 'Archivo Black', sans-serif;
    font-size: 1.5rem;
    width: 15%;
-   border-radius: 10px;
    margin: 1.5rem;
+   border-radius: 10px;
 `
 
 
