@@ -23,3 +23,15 @@
 // 5) make handleOrder & handleFilter work at the same time.
 //
 // 6) add a functionality that shows all fav characters.
+// 
+// 7) not repeat characters.
+// 
+// 8) random character.
+// 
+// 9) error 404 for not found route.
+// 
+// 10) log out redirects to form.
+// 
+// 11) close button removes card from fav component too.
+// 
+// 12) show all chatacters functionality in the select filter.
