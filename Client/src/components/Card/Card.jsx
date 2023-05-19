@@ -28,6 +28,7 @@ const CardBoxImg = styled.img `
 `
 
 const CloseButton = styled.button `
+
    opacity: 0.5;
    margin-bottom: 10px;
    font-size: 1rem;
@@ -38,8 +39,47 @@ const CloseButton = styled.button `
       background-color: red;
       border-color: red;
       border-radius: 7px;
+      cursor: pointer;
    };
 `
+
+const FavButton = styled.button `
+   background-color: Transparent;
+   background-repeat: no-repeat;
+   border: none;
+   margin-top: 7px;
+
+   &:hover {
+      opacity: 50%;
+      border: none;
+      cursor: pointer;
+   };
+`
+
+const TextName = styled.p `
+   margin: 5px;
+   text-decoration: none !important;
+   color: black;
+
+   &:not(.active) {
+      text-decoration: none;
+    }
+   &.active {
+      font-weight: bold;
+      color: blue;
+    }
+  
+`
+
+const StyledNavLink = styled(NavLink)`
+  &.custom-link {
+    text-decoration: none !important;
+  }
+  &.active {
+    font-weight: bold;
+    color: blue;
+  }
+`;
 
 const Text = styled.p `
    margin: 5px;
@@ -71,12 +111,12 @@ export function Card({id, name, status, species, gender, origin, image, onClose,
    return (
       <CardBox>
 
-         <button onClick = {handleFavourite}>{isFav ? '❤️' : '🤍'}</button>
          <CloseButton onClick = {() => {onClose(id)}}>x</CloseButton>
          <CardBoxImg src = {image} alt = {`picture of ${name}`} />
-         <NavLink to = {`/detail/${id}`}> {/*It's changing the style of the affected element (Text) */}
-            <Text>{name}</Text>
-         </NavLink>
+         <FavButton onClick = {handleFavourite}>{isFav ? '❤️' : '🤍'}</FavButton>
+         <StyledNavLink to = {`/detail/${id}`}> {/*It's changing the style of the affected element (Text) */}
+            <TextName>{name}</TextName>
+         </StyledNavLink>
          <Text>{species}</Text>
          <Text>{gender}</Text>
       </CardBox>

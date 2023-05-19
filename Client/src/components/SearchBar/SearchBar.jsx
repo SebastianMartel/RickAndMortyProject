@@ -23,6 +23,7 @@ const AddButton = styled.button `
    margin: 1.5rem 2rem;
    &:hover {
       background-color: #139451;
+      cursor: pointer;
    }
 `
 const InputText = styled.input `
