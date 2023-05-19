@@ -9,6 +9,8 @@ import About from './components/About/About'
 import Detail from './components/Detail/Detail'
 import Favourites from './components/Favourites/Favourites';
 import Forms from './components/Forms/Forms';
+import backgroundPortal from './Img/BackgroundPortal.jpg'
+import holo from './Img/HolographicSilverFoil.jpg'
 
 
 function App() {
@@ -55,13 +57,23 @@ function App() {
       !access && Navigate('/')
    }, [access, Navigate]) // added 'Navigate' to the array.
 
+
+   useEffect(() => {
+      if (location.pathname === '/') {
+        document.body.style.backgroundImage = `url(${holo})`;
+      } else {
+        document.body.style.backgroundImage = `url(${backgroundPortal})`;
+      }
+    }, [location.pathname]);
+  
+
    return (
       <div className='App'>
          {
             location.pathname !== '/' && <Nav onSearch = {onSearch}/>
          }
          <Routes> {/* Contains all the routes*/} {/* And Route indicates in what path the element should be rendered*/}
-            <Route path = '/' element = {<Forms login = {login}/>}/>
+            <Route exact path = '/' element = {<Forms login = {login}/>}/>
             <Route path = '/home' element = {<Cards characters = {characters} id = {characters.id} onClose = {onClose}/>}/>
             <Route path = '/about' element = {<About/>}/>
             <Route path = '/detail/:id' element = {<Detail characters = {characters}/>}/> {/*dynamic path will always match the path that is being used, and so, it will always render the elment.*/}
