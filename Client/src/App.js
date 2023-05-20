@@ -68,9 +68,11 @@ function App() {
       document.body.style.display = 'flex';
       document.body.style.justifyContent = 'center';
       document.body.style.alignItems = 'center';
+      document.body.style.height = '100vh';
       } else {
         document.body.style.backgroundImage = `url(${backgroundPortal})`;
         document.body.style.display = 'block';
+        document.body.style.height = '96vh';
 
       }
     }, [location.pathname]);
