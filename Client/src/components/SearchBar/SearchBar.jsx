@@ -9,6 +9,7 @@ const SearchBarDiv = styled.div `
    background-image: linear-gradient(to right, #DA8787, #E1B07E, #434469, #01161E);
    height: 6rem;
    margin: 1.5%;
+   margin-top: 0;
    border: none;
    border-radius: 10px;
 ` 
