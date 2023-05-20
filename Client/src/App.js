@@ -9,8 +9,9 @@ import About from './components/About/About'
 import Detail from './components/Detail/Detail'
 import Favourites from './components/Favourites/Favourites';
 import Forms from './components/Forms/Forms';
+
 import backgroundPortal from './Img/BackgroundPortal.jpg'
-import holo from './Img/HolographicSilverFoil.jpg'
+import FormBackground from './Img/FormBackground.jpg'
 
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
 
    useEffect(() => {
       if (location.pathname === '/') {
-        document.body.style.backgroundImage = `url(${holo})`;
+        document.body.style.backgroundImage = `url(${FormBackground})`;
       } else {
         document.body.style.backgroundImage = `url(${backgroundPortal})`;
       }
