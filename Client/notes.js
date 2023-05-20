@@ -35,3 +35,8 @@
 // 11) close button removes card from fav component too.
 // 
 // 12) show all chatacters functionality in the select filter.
+// 
+// 13) Nav margin-top is being added OUTSIDE the body element, unnecessary scroll bar on the right side.
+// OPT 1: remove margin, margin-top, affected components: App.css, SearchBar.jsx
+// OPT 2: remove margin of: App.css. Change height to 96(max before scroll bar appears) in rest of paths, or change the height to the full body to 96vh.
+//        Affected components: App.js (or: App.css)

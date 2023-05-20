@@ -2,7 +2,6 @@ import { useState } from "react"
 import validation from "../Validation/Validation"
 import styled from "styled-components"
 
-import FormBackgroundBlur from '../../Img/FormBackgroundBlur.png'
 import FormPortrait from '../../Img/FormPortrait.png'
 
 
@@ -10,30 +9,25 @@ const StyledDiv = styled.div `
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 10em;
-    gap: 5em;
     align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 6em auto 0;
-    height: 30em;
     gap: 5em;
-
-    margin: 6em auto 0;
-    height: 30em;
 
     img {
+        width: 20%;
+        max-width: 20%;
         border-top-right-radius: 10px;
         border-top-left-radius: 10px;
 }
 `
+
 const StyledForm = styled.form `
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     background-color: red;
     border: 1px solid black;
-    border-radius: 10px;    
+    border-radius: 10px;
+    height: 100%;
+
 `
 
 const StyledError = styled.p `
@@ -73,7 +67,6 @@ export default function Forms ({login}) {
 
 
     return (
-        <>
         <StyledDiv>
             <img src={FormPortrait} />
             <StyledForm onSubmit={handleSubmit}>
@@ -88,6 +81,5 @@ export default function Forms ({login}) {
                 <button>Log in</button>
             </StyledForm>
             </StyledDiv>
-        </>
     )
 }

@@ -12,6 +12,7 @@ import Forms from './components/Forms/Forms';
 
 import backgroundPortal from './Img/BackgroundPortal.jpg'
 import FormBackground from './Img/FormBackground.jpg'
+import FormBackgroundBlur from './Img/FormBackgroundBlur.png'
 
 
 function App() {
@@ -61,9 +62,17 @@ function App() {
 
    useEffect(() => {
       if (location.pathname === '/') {
-        document.body.style.backgroundImage = `url(${FormBackground})`;
+        document.body.style.backgroundImage = `url(${FormBackgroundBlur})`;
+      //   document.body.style.alignItems = 'center';
+      //   document.body.style.display = 'flex';
+      document.body.style.display = 'flex';
+      document.body.style.justifyContent = 'center';
+      document.body.style.alignItems = 'center';
+      document.body.style.height = '100vh';
       } else {
         document.body.style.backgroundImage = `url(${backgroundPortal})`;
+        document.body.style.display = 'block';
+        document.body.style.height = '96vh';
       }
     }, [location.pathname]);
   
