@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import validation from "../Validation/Validation"
 import styled from "styled-components"
 
@@ -42,19 +42,20 @@ const StyledForm = styled.div `
     flex-direction: column;
 
 
-    padding: 5px;
+    padding: 5px 15px;
+    padding-bottom: min(15px);
+    padding-top: min(15px);
     width: 390px;
     max-height: 450px;
     min-height: 390px;
     border-radius: 10px;
-    background-color: #04EECB90;
+    background-color: #5F7367;
 `
 
 const StyledFormData = styled.form `
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 
     width: 390px;
     max-height: 390px;
@@ -65,14 +66,15 @@ const StyledInput = styled.input `
 
     padding: 8px;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 4.15399px 7.26947px inset;
-    background-color: #03958A;
+    margin: 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 7px inset;
+    background-color: #56695E;
     border: none;
     color: white;
     padding: 15px;
     
     ::placeholder {
-        color:white
+        color: white;
     }
 `
 
@@ -85,55 +87,73 @@ const StyledError = styled.p `
 const StyledButton = styled.button `
 
     padding: 10px;
+    margin-top: 10px;
     font-family: ;
     font-size : 20px;
+    font-weight: bold;
     border-radius: 10px;
     border: 0.25px ;
-    color: white;
+    color: black;
+
     // background-color: #0E7C7B90;
     // background-color: #A9D8B890;
     // background-color: #BEFFC790;
     // background-color: #0D1F2D90;
-    background-color: #F6AE2D95;
+
+    // *hasErrors and hasNotCompleted are passed as props.
+    
+    background-color: ${({ hasErrors, hasNotCompleted }) => hasErrors || hasNotCompleted === true ? "#F6AE2D50" : "#FFEF00"};
+    pointer-events: ${({ hasErrors, hasNotCompleted }) => hasErrors || hasNotCompleted ? 'none' : 'auto'};
+
 
     &:hover {
-        cursor: pointer;
-        // background-color: #0D1F2D;
-        background-color: #F0DD0E
+        cursor: ${({ hasErrors, hasNotCompleted }) => hasErrors || hasNotCompleted ? 'not-allowed' : 'pointer'};
     }
 `
 
-export default function Forms ({login}) {
 
-    const [userData, setUserData] = useState({
-        email: '',
-        password: ''
-    })
-
-    const [errors, setErrors] = useState({})
-
-    const handleChange = (event) => {
-        console.log(event)
-        setUserData({
-            ...userData,
-            [event.target.name] : event.target.value            
-        })
-        setErrors(validation({
-            ...userData,
-            [event.target.name] : event.target.value
-        }))
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        login(userData)
-    }
-
-    // const handleInputClick = () => {
+// const handleInputClick = () => {
     //     document.body.style.backgroundImage = `url(${FormBackgroundBlur}")`;
     // }
     // add: onClick = {handleInputClick}, to email and password input
+    
+    export default function Forms ({login}) {
+        
+            const [userData, setUserData] = useState({
+                email: '',
+                password: ''
+            })
+            
+            const [errors, setErrors] = useState({})
+            
+            const handleChange = (event) => {
+                console.log(event)
+                setUserData({
+                    ...userData,
+                    [event.target.name] : event.target.value            
+                })
+                setErrors(validation({
+                    ...userData,
+                    [event.target.name] : event.target.value
+                }))
+            }
+        
+        const handleSubmit = (event) => {
+            event.preventDefault()
+            login(userData)
+        }
+    
+        
+        const hasErrors = Object.keys(errors).length;
+        
+        const handleValidation = () => {
+            if (hasErrors) return true;
+            else return false
+        }
 
+        const handleInputs = () => {
+            return Object.values(userData).some(value => value.length === 0);
+        }
 
     return (
         <MainDiv>
@@ -143,22 +163,22 @@ export default function Forms ({login}) {
 
             <StyledDivForm>
                 <StyledForm onSubmit = {handleSubmit}>
-                    <div style = {{fontSize : '50px', color: '#E8E5DA', border: '1px solid red'}}>Welcome</div>
+                    <div style = {{fontSize : '50px', color: '#E8E5DA', padding: '5px'}}>Welcome</div>
+
+                    <div style = {{border: '3px solid #FFEF00', margin: '10px 0'}}/>
+
+                    <div style = {{border: '3px solid #067574', margin: '10px 0'}}/>
 
                     <StyledFormData>
-                        <label style = {{fontSize : '30px', color: '#F7FFF7', border: '1px solid red' }} htmlFor="email">Email</label>
                             <StyledInput name='email' value={userData.email} type='text' onChange={handleChange} placeholder='Email' />
                             {errors.email && <StyledError>{errors.email}</StyledError>}
 
-                        <hr></hr>
 
-                        <label style = {{fontSize : '30px', color: 'white', border: '1px solid red' }} htmlFor="password">Password</label>
                             <StyledInput name='password' value={userData.password} type='text' onChange={handleChange} placeholder='Password' />
                             {errors.password && <StyledError>{errors.password}</StyledError>}
 
-                        <hr></hr>
 
-                        <StyledButton>LOG IN</StyledButton>
+                        <StyledButton hasErrors = {handleValidation()} hasNotCompleted = {handleInputs()}>LOG IN</StyledButton>
 
                     </StyledFormData>
                 </StyledForm>

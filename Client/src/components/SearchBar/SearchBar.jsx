@@ -46,7 +46,7 @@ export default function SearchBar({onSearch}) {
    let [id, setId] = useState('')
 
    const handleChange = (event) => {
-      const newId = event.target.value
+      const newId = event.target.value;
       setId(newId)
    }
 
