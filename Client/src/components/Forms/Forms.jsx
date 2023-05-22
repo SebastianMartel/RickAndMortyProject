@@ -44,9 +44,10 @@ const StyledForm = styled.div `
 
     padding: 5px;
     width: 390px;
-    height: 390px;
+    max-height: 450px;
+    min-height: 390px;
     border-radius: 10px;
-    background-color: rgba(0, 0 , 0, 0.45);
+    background-color: #04EECB90;
 `
 
 const StyledFormData = styled.form `
@@ -55,13 +56,24 @@ const StyledFormData = styled.form `
     justify-content: center;
 
 
-    border-radius: 10px;
     width: 390px;
-    height: 390px;
+    max-height: 390px;
+    border-radius: 10px;
 `
 
 const StyledInput = styled.input `
+
+    padding: 8px;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4.15399px 7.26947px inset;
+    background-color: #03958A;
+    border: none;
+    color: white;
+    padding: 15px;
+    
+    ::placeholder {
+        color:white
+    }
 `
 
 const StyledError = styled.p `
@@ -71,17 +83,23 @@ const StyledError = styled.p `
 `
 
 const StyledButton = styled.button `
+
+    padding: 10px;
+    font-family: ;
     font-size : 20px;
     border-radius: 10px;
-    border: 0;
+    border: 0.25px ;
     color: white;
     // background-color: #0E7C7B90;
     // background-color: #A9D8B890;
     // background-color: #BEFFC790;
-    background-color: #0D1F2D90;
+    // background-color: #0D1F2D90;
+    background-color: #F6AE2D95;
 
     &:hover {
         cursor: pointer;
+        // background-color: #0D1F2D;
+        background-color: #F0DD0E
     }
 `
 
@@ -124,7 +142,7 @@ export default function Forms ({login}) {
             </StyledDivImg>
 
             <StyledDivForm>
-                <StyledForm onSubmit={handleSubmit}>
+                <StyledForm onSubmit = {handleSubmit}>
                     <div style = {{fontSize : '50px', color: '#E8E5DA', border: '1px solid red'}}>Welcome</div>
 
                     <StyledFormData>
@@ -140,7 +158,7 @@ export default function Forms ({login}) {
 
                         <hr></hr>
 
-                        <StyledButton>Login</StyledButton>
+                        <StyledButton>LOG IN</StyledButton>
 
                     </StyledFormData>
                 </StyledForm>
