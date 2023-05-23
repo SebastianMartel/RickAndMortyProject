@@ -3,7 +3,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import { NavLink } from "react-router-dom";
 
 import NavLogo from '../../Img/NavLogo.png'
-
+import NavBackground from '../../Img/NavOp1.png'
 
 const StyledNav = styled.nav `
     /* position: fixed;*/
@@ -15,11 +15,29 @@ const StyledNav = styled.nav `
     // margin: 1.5%;
     padding: 10px;
     height: 6rem;
-    background-image: linear-gradient(to left, #DA8787, #E1B07E, #434469, #01161E);
+    background-image: url(${NavBackground});
+    // background-image: linear-gradient(to left, #DA8787, #E1B07E, #434469, #01161E);
+    background-repeat: no-repeat;
     border: none;
     border-radius: 10px;
 `
+
 const StyledButtons = styled.button `
+    margin: 1rem;
+    padding: 10px 0;
+    width: 7rem;
+    background-color: #067574;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1rem;
+    color: #FFEF00;
+
+    &:hover {
+        background-color: #FFEF00;
+        color: #067574;
+        cursor: pointer;
+    }
 `
 
 
