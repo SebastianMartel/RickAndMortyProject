@@ -41,3 +41,5 @@
 // OPT 2: remove margin of: App.css. Change height to 96(max before scroll bar appears) in rest of paths, or change the height to the full body to 96vh.
 //        Affected components: App.js (or: App.css)
 // I think it's because of elements inside the navBar margin
+// 
+// 13) render buttons inside the searchBar

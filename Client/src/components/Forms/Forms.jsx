@@ -174,7 +174,7 @@ const StyledButton = styled.button `
                             {errors.email && <StyledError>{errors.email}</StyledError>}
 
 
-                            <StyledInput name='password' value={userData.password} type='password' onChange={handleChange} placeholder='Password' />
+                            <StyledInput name='password' value={userData.password} type='text' onChange={handleChange} placeholder='Password' />
                             {errors.password && <StyledError>{errors.password}</StyledError>}
 
 

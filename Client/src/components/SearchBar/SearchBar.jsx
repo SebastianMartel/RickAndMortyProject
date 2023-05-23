@@ -8,7 +8,8 @@ const SearchBarDiv = styled.div `
    border-bottom: solid 1px black;
    background-image: linear-gradient(to right, #DA8787, #E1B07E, #434469, #01161E);
    height: 6rem;
-   margin: 1.5%;
+   margin: 1.2rem;
+   // margin: 1.5%;
    border: none;
    border-radius: 10px;
 ` 
@@ -41,7 +42,7 @@ const InputText = styled.input `
 //animated searchBar backround, something special about the show, and not heavy to not overwhelm the ui
 
 
-export default function SearchBar({onSearch}) {
+export default function SearchBar({ onSearch }) {
 
    let [id, setId] = useState('')
 
