@@ -43,3 +43,5 @@
 // I think it's because of elements inside the navBar margin
 // 
 // 13) render buttons inside the searchBar
+// 
+// 14) if alive, green; if dead, red

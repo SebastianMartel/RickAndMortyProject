@@ -2,38 +2,34 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const SearchBarDiv = styled.div `
-   /* position: fixed;*/
    display: flex;
    justify-content: flex-end;
-   border-bottom: solid 1px black;
-   background-image: linear-gradient(to right, #DA8787, #E1B07E, #434469, #01161E);
-   height: 6rem;
-   margin: 1.2rem;
-   // margin: 1.5%;
-   border: none;
+   height: 100%;
+`
+
+const InputText = styled.input `
+   margin: 1.5rem; 
+   width: 10rem;
+   background-color: biege;
    border-radius: 10px;
-` 
+   font-family: 'Archivo Black', sans-serif;
+   font-size: 1.5rem;
+`
+
 const AddButton = styled.button `
+   margin: 1.5rem 2.5rem;
+   width: 7rem;
    background-color: #1CD777;
+   border: none;
+   border-radius: 5px;
    font-family: 'Archivo Black', sans-serif;
    font-size: 1.5rem;
    color: white;
-   border: none;
-   border-radius: 5px;
-   width: 10%;
-   margin: 1.5rem 2rem;
+
    &:hover {
       background-color: #139451;
       cursor: pointer;
    }
-`
-const InputText = styled.input `
-   background-color: biege;
-   font-family: 'Archivo Black', sans-serif;
-   font-size: 1.5rem;
-   width: 15%;
-   margin: 1.5rem;
-   border-radius: 10px;
 `
 
 
