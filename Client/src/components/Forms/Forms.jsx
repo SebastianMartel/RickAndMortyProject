@@ -119,41 +119,41 @@ const StyledButton = styled.button `
     
     export default function Forms ({login}) {
         
-            const [userData, setUserData] = useState({
-                email: '',
-                password: ''
+        const [userData, setUserData] = useState({
+            email: '',
+            password: ''
+        })
+        
+        const [errors, setErrors] = useState({})
+        
+        const handleChange = (event) => {
+            console.log(event)
+            setUserData({
+                ...userData,
+                [event.target.name] : event.target.value            
             })
-            
-            const [errors, setErrors] = useState({})
-            
-            const handleChange = (event) => {
-                console.log(event)
-                setUserData({
-                    ...userData,
-                    [event.target.name] : event.target.value            
-                })
-                setErrors(validation({
-                    ...userData,
-                    [event.target.name] : event.target.value
-                }))
+            setErrors(validation({
+                ...userData,
+                [event.target.name] : event.target.value
+            }))
+        }
+        
+            const handleSubmit = (event) => {
+                event.preventDefault()
+                login(userData)
             }
         
-        const handleSubmit = (event) => {
-            event.preventDefault()
-            login(userData)
-        }
-    
-        
-        const hasErrors = Object.keys(errors).length;
-        
-        const handleValidation = () => {
-            if (hasErrors) return true;
-            else return false
-        }
+            
+            const hasErrors = Object.keys(errors).length;
+            
+            const handleValidation = () => {
+                if (hasErrors) return true;
+                else return false
+            }
 
-        const handleInputs = () => {
-            return Object.values(userData).some(value => value.length === 0);
-        }
+            const handleInputs = () => {
+                return Object.values(userData).some(value => value.length === 0);
+            }
 
     return (
         <MainDiv>
@@ -163,6 +163,7 @@ const StyledButton = styled.button `
 
             <StyledDivForm>
                 <StyledForm onSubmit = {handleSubmit}>
+
                     <div style = {{fontSize : '50px', color: '#E8E5DA', padding: '5px'}}>Welcome</div>
 
                     <div style = {{border: '3px solid #FFEF00', margin: '10px 0 0 0'}}/>
@@ -170,11 +171,12 @@ const StyledButton = styled.button `
                     <div style = {{border: '3px solid #067574', margin: '0 0 10px 0'}}/>
 
                     <StyledFormData>
-                            <StyledInput name='email' value={userData.email} type='text' onChange={handleChange} placeholder='Email' />
+
+                        <StyledInput name='email' value={userData.email} type='text' onChange={handleChange} placeholder='Email' />
                             {errors.email && <StyledError>{errors.email}</StyledError>}
 
 
-                            <StyledInput name='password' value={userData.password} type='text' onChange={handleChange} placeholder='Password' />
+                        <StyledInput name='password' value={userData.password} type='text' onChange={handleChange} placeholder='Password' />
                             {errors.password && <StyledError>{errors.password}</StyledError>}
 
 
