@@ -165,16 +165,16 @@ const StyledButton = styled.button `
                 <StyledForm onSubmit = {handleSubmit}>
                     <div style = {{fontSize : '50px', color: '#E8E5DA', padding: '5px'}}>Welcome</div>
 
-                    <div style = {{border: '3px solid #FFEF00', margin: '10px 0'}}/>
+                    <div style = {{border: '3px solid #FFEF00', margin: '10px 0 0 0'}}/>
 
-                    <div style = {{border: '3px solid #067574', margin: '10px 0'}}/>
+                    <div style = {{border: '3px solid #067574', margin: '0 0 10px 0'}}/>
 
                     <StyledFormData>
                             <StyledInput name='email' value={userData.email} type='text' onChange={handleChange} placeholder='Email' />
                             {errors.email && <StyledError>{errors.email}</StyledError>}
 
 
-                            <StyledInput name='password' value={userData.password} type='text' onChange={handleChange} placeholder='Password' />
+                            <StyledInput name='password' value={userData.password} type='password' onChange={handleChange} placeholder='Password' />
                             {errors.password && <StyledError>{errors.password}</StyledError>}
 
 
