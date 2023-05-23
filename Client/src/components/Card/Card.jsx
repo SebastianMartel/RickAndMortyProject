@@ -8,17 +8,21 @@ import { useState, useEffect} from "react";
 const CardBox = styled.div `
    display: flex;
    flex-direction: column;
-   max-width: 250px;
+
    margin: 0 auto 10px;
    padding: 10px 10px;
-   border-radius: 7px;
+   max-width: 250px;
    background-image: linear-gradient(to right bottom, #CBC0AD, #86A397);
-   `
+   border-radius: 7px;
+   border: ${({ handleStatus }) =>
+   handleStatus ? '5px solid green' : '5px solid red'};
+`
 
 const CardBoxImg = styled.img `
    display: flex;
-   max-width: 250px;
    align-items: center;
+
+   max-width: 250px;
    object-fit: cover;
    border: 7px solid;
    border-radius: 13px;
@@ -29,11 +33,11 @@ const CardBoxImg = styled.img `
 
 const CloseButton = styled.button `
 
-   opacity: 0.5;
    margin-bottom: 10px;
-   font-size: 1rem;
    align-self: flex-end;
+   opacity: 0.5;
    border-radius: 3px;
+   font-size: 1rem;
 
    &:hover {
       background-color: red;
@@ -44,10 +48,10 @@ const CloseButton = styled.button `
 `
 
 const FavButton = styled.button `
+   margin-top: 7px;
    background-color: Transparent;
    background-repeat: no-repeat;
    border: none;
-   margin-top: 7px;
 
    &:hover {
       opacity: 50%;
@@ -68,7 +72,6 @@ const TextName = styled.p `
       font-weight: bold;
       color: blue;
     }
-  
 `
 
 const StyledNavLink = styled(NavLink)`
@@ -108,17 +111,28 @@ export function Card({id, name, status, species, gender, origin, image, onClose,
       });
    }, [myFavourites]); // shall include id?
 
+
+   const handleStatus = () => {
+      if(status === 'Alive') return true
+      else if(status === 'Dead') return false
+   }
+
    return (
-      <CardBox>
+      <CardBox handleStatus = {handleStatus()}>
 
          <CloseButton onClick = {() => {onClose(id)}}>x</CloseButton>
+
          <CardBoxImg src = {image} alt = {`picture of ${name}`} />
+
          <FavButton onClick = {handleFavourite}>{isFav ? '❤️' : '🤍'}</FavButton>
+
          <StyledNavLink to = {`/detail/${id}`}> {/*It's changing the style of the affected element (Text) */}
             <TextName>{name}</TextName>
          </StyledNavLink>
+
          <Text>{species}</Text>
          <Text>{gender}</Text>
+         
       </CardBox>
    );
 }

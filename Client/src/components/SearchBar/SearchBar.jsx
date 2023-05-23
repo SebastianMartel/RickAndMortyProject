@@ -9,8 +9,10 @@ const SearchBarDiv = styled.div `
 
 const InputText = styled.input `
    margin: 1.5rem; 
+   padding: 15px;
    width: 10rem;
    background-color: biege;
+   border: none;
    border-radius: 10px;
    font-family: 'Archivo Black', sans-serif;
    font-size: 1.5rem;
@@ -49,7 +51,7 @@ export default function SearchBar({ onSearch }) {
 
    return (
       <SearchBarDiv>
-         <InputText type='search' onChange = {handleChange} value = {id} /* necessary to synchronize both id (state id and current element value)*//>
+         <InputText placeholder='Id...' type='search' onChange = {handleChange} value = {id} /* necessary to synchronize both id (state id and current element value)*//>
          <AddButton onClick={() => {onSearch(id); setId('')}}>Add</AddButton>
       </SearchBarDiv>
    );
