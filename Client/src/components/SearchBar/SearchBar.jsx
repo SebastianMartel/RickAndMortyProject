@@ -51,7 +51,7 @@ export default function SearchBar({ onSearch }) {
 
    return (
       <SearchBarDiv>
-         <InputText placeholder='Id...' type='search' onChange = {handleChange} value = {id} /* necessary to synchronize both id (state id and current element value)*//>
+         <InputText placeholder='Id' type='search' onChange = {handleChange} value = {id} /* necessary to synchronize both id (state id and current element value)*//>
          <AddButton onClick={() => {onSearch(id); setId('')}}>Add</AddButton>
       </SearchBarDiv>
    );

@@ -9,16 +9,38 @@ import styled from "styled-components"
 const FilterDiv = styled.div `
     display: flex;
     justify-content: center;
+    gap: 1.5rem;
 
     margin: 0 auto;
     padding: 15px 0;
-    width: 20%;
+    width: 23%;
     background-image: linear-gradient(to left, #DA8787, #E1B07E, #434469, #01161E);
     border-radius: 50px
 `
 
 const FavCardBox = styled.div `
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+
     margin-top: 1.2rem;
+`
+
+const StyledSelect = styled.select `
+    padding: 5px;
+    appareance: none;
+    outline: none;
+    background-color: #0D1F2D;
+    color: white;
+    font-size: 15px;
+    font-family: consolas;
+    border: none;
+    box-shadow: 2px 2px white
+`
+
+const Options = styled.option `
+    font-size: 15px
 `
 
 const Favourites = ({myFavourites}) => {
@@ -44,24 +66,24 @@ const Favourites = ({myFavourites}) => {
     return (
         <>
             <FilterDiv>
-                <select onChange = {handleOrder}>
-                    <option value = 'A'>Ascendente</option>
-                    <option value = 'D'>Descendente</option>
-                </select>
-                <select onChange = {handleFilter}>
-                    <option value = 'Male'>Male</option>
-                    <option value = 'Female'>Female</option>
-                    <option value = 'Genderless'>Genderless</option>
-                    <option value = 'unknown'>unknown</option>
-                </select>
+                <StyledSelect onChange = {handleOrder}>
+                    <Options value = 'A'>Ascendente</Options>
+                    <Options value = 'D'>Descendente</Options>
+                </StyledSelect>
+                <StyledSelect onChange = {handleFilter}>
+                    <Options value = 'Male'>Male</Options>
+                    <Options value = 'Female'>Female</Options>
+                    <Options value = 'Genderless'>Genderless</Options>
+                    <Options value = 'unknown'>Unknown</Options>
+                </StyledSelect>
             </FilterDiv>
-        {
-            myFavourites?.map(({id, name, status, species, gender, image, onClose}, idx) => {
-                
-                const characterStatus = handleStatus(status)
 
-                return (    
-                    <FavCardBox>
+            <FavCardBox>
+            {
+                myFavourites?.map(({id, name, status, species, gender, image, onClose}, idx) => {
+                    const characterStatus = handleStatus(status)
+
+                    return (    
                         <Card
                             key = {idx}
                             id = {id}
@@ -72,10 +94,11 @@ const Favourites = ({myFavourites}) => {
                             onClose = {onClose}
                             handleFavCharStatus = {characterStatus}
                         />
-                    </FavCardBox>
-                )
-            })
-        }
+                    
+                    )
+                })
+            }
+            </FavCardBox>
         </>
     )
 }

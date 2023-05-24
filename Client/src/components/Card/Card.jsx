@@ -39,13 +39,19 @@ const CloseButton = styled.button `
    margin-bottom: 10px;
    align-self: flex-end;
    opacity: 0.5;
+   border: none;
    border-radius: 3px;
    font-size: 1rem;
+   box-shadow: 1px 1px 1px red;
+   font-weight: bold;
 
    &:hover {
-      background-color: red;
+      color: white;
       border-color: red;
       border-radius: 7px;
+      background-color: red;
+      box-shadow: none;
+      font-weight: normal;
       cursor: pointer;
    };
 `

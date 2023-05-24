@@ -28,10 +28,10 @@ const StyledButtons = styled.button `
     width: 7rem;
     background-color: #067574;
     border: none;
-    border-radius: 5px;
     font-family: 'Archivo Black', sans-serif;
     font-size: 1rem;
     color: #FFEF00;
+    box-shadow: 5px 5px #0D1F2D;
 
     &:hover {
         background-color: #FFEF00;
