@@ -14,8 +14,7 @@ const CardBox = styled.div `
    max-width: 250px;
    background-image: linear-gradient(to right bottom, #CBC0AD, #86A397);
    border-radius: 7px;
-   border: ${({ handleStatus }) =>
-   handleStatus ? '5px solid green' : '5px solid red'};
+   border: ${({ handleCharStatus, handleFavCharStatus }) => handleCharStatus || handleFavCharStatus ? '3px solid rgb(0,214,41)' : '3px solid red'};
 `
 
 const CardBoxImg = styled.img `
@@ -89,7 +88,7 @@ const Text = styled.p `
 `
 
 
-export function Card({id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavourites}) {
+export function Card({ id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavourites, handleFavCharStatus }) {
 
    const [isFav,setIsFav] = useState(false)
    
@@ -118,7 +117,7 @@ export function Card({id, name, status, species, gender, origin, image, onClose,
    }
 
    return (
-      <CardBox handleStatus = {handleStatus()}>
+      <CardBox handleCharStatus = {handleStatus()} handleFavCharStatus = {handleFavCharStatus}>
 
          <CloseButton onClick = {() => {onClose(id)}}>x</CloseButton>
 

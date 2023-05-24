@@ -19,6 +19,11 @@ const Favourites = ({myFavourites}) => {
         dispatch(filterCards(event.target.value))
     }
 
+    const handleStatus = (status) => {
+        if(status === 'Alive') return true
+        else if(status === 'Dead') return false
+    }
+  
     return (
         <>
             <select onChange = {handleOrder}>
@@ -32,7 +37,10 @@ const Favourites = ({myFavourites}) => {
                 <option value = 'unknown'>unknown</option>
             </select>
         {
-            myFavourites?.map(({id, name, species, gender, image, onClose}, idx) => {
+            myFavourites?.map(({id, name, status, species, gender, image, onClose}, idx) => {
+                
+                const characterStatus = handleStatus(status)
+
                 return (    
                     <>
                     <Card
@@ -43,6 +51,7 @@ const Favourites = ({myFavourites}) => {
                         gender = {gender}
                         image = {image}
                         onClose = {onClose}
+                        handleFavCharStatus = {characterStatus}
                     />
                     </>
                 )
