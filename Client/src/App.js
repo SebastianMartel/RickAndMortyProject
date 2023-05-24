@@ -70,13 +70,14 @@ function App() {
       document.body.style.justifyContent = 'center';
       document.body.style.alignItems = 'center';
       document.body.style.height = '100vh';
-      } else if (location.pathname === '/about') {
-         document.body.style.backgroundImage = `url(${AboutBackground})`;
+      } 
+      else if (location.pathname === '/home' || location.pathname === '/favourites') {
+         document.body.style.backgroundImage = `url(${BackgroundPortal})`;
          document.body.style.display = 'block';
-        document.body.style.height = '96vh';
-
-      } else {
-        document.body.style.backgroundImage = `url(${BackgroundPortal})`;
+         document.body.style.height = '96vh';
+      }
+      else {
+        document.body.style.backgroundImage = `url(${AboutBackground})`;
         document.body.style.display = 'block';
         document.body.style.height = '96vh';
 

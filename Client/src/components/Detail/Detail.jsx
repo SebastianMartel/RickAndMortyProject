@@ -2,6 +2,30 @@ import axios from "axios"
 import { useParams } from "react-router-dom" // access to the url dynamic parameter. Needs to match the dynamic parameter.
 import { useState , useEffect} from "react"
 
+import styled from "styled-components"
+
+const MainDiv = styled.div `
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+
+
+    margin: 8% 0;
+    padding: 2% 0;
+    background-color: #FFFFFF90;
+`
+
+const Img = styled.img `
+`
+
+const TextDiv = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center
+`
+
+
 export default function Detail () {
 
     const [character, setCharacter] = useState({})
@@ -20,13 +44,15 @@ export default function Detail () {
      }, [id]); // [id], prevents from calling useEffect as an infinite loop.
     
     return (
-        <div>
-            <p>{character?.name}</p>
-            <p>{character?.status}</p>
-            <p>{character?.species}</p>
-            <p>{character?.gender}</p>
-            <p>{character?.origin?.name}</p>
-            <img src = {character?.image} alt = {`${character?.name}`} />
-        </div>
+        <MainDiv>
+            <Img src = {character?.image} alt = {`${character?.name}`}/>
+            <TextDiv>
+                <p>Name: {character?.name}</p>
+                <p>Status: {character?.status}</p>
+                <p>Specie: {character?.species}</p>
+                <p>Gender: {character?.gender}</p>
+                <p>Origin: {character?.origin}</p>
+            </TextDiv>
+        </MainDiv>
     )
 }

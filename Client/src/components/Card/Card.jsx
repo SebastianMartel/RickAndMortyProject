@@ -15,6 +15,10 @@ const CardBox = styled.div `
    background-image: linear-gradient(to right bottom, #CBC0AD, #86A397);
    border-radius: 7px;
    border: ${({ handleCharStatus, handleFavCharStatus }) => handleCharStatus || handleFavCharStatus ? '3px solid rgb(0,214,41)' : '3px solid red'};
+
+   &:hover {
+      
+   }
 `
 
 const CardBoxImg = styled.img `
@@ -61,7 +65,6 @@ const FavButton = styled.button `
 
 const TextName = styled.p `
    margin: 5px;
-   text-decoration: none !important;
    color: black;
 
    &:not(.active) {
@@ -74,14 +77,9 @@ const TextName = styled.p `
 `
 
 const StyledNavLink = styled(NavLink)`
-  &.custom-link {
-    text-decoration: none !important;
-  }
-  &.active {
-    font-weight: bold;
-    color: blue;
-  }
-`;
+   text-decoration: none;
+   font-weight: bold;
+`
 
 const Text = styled.p `
    margin: 5px;

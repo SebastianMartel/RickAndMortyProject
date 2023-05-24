@@ -7,6 +7,8 @@ display: flex;
 flex-wrap: wrap;
 flex-direction: row;
 justify-content: space-between;
+
+margin: 50px 0
 `
 
 export default function Cards({characters, onClose}) {
