@@ -45,7 +45,7 @@ const StyledButtons = styled.button `
 export default function Nav({ onSearch, addRandom }) {
     return (
         <StyledNav>
-            <img src = {NavLogo} style = {{margin: '10px'}}></img>
+            <img src = {NavLogo} style = {{margin: '10px'}} alt = 'Navigation Bar'></img>
             <NavLink to = '/home'> {/* Adds an extra functionality to the element. In this case the functionaility is to change the url to the specified path inside 'to' attribute*/}
                     <StyledButtons>Home</StyledButtons>
             </NavLink>
@@ -56,7 +56,7 @@ export default function Nav({ onSearch, addRandom }) {
                     <StyledButtons>About Me</StyledButtons>
             </NavLink>
 
-            <SearchBar onSearch={onSearch} />
+            <SearchBar onSearch = {onSearch} />
 
             <button onClick = {addRandom}>?</button>
         </StyledNav>

@@ -24,33 +24,15 @@
 //
 // 6) add a functionality that shows all fav characters in the select filter.
 // 
-// 7) not repeat characters.
-// const exists = characters.find((char) => char.id === data.id)
+// DONE 7) not repeat characters.
 // 
-// 8) random character.
-//       const addRandom = () => {
-//     const randomNumber = Math.floor(Math.random() * 826) + 1;
-
-//     axios(`https://rickandmortyapi.com/api/character/${randomNumber}`)
-//     .then(({ data }) => {
-//        if (data.name) {
-//           const notFound = characters.find((char) => char.id === data.id);
-//           if (!notFound) {
-//              setCharacters((oldChars) => [...oldChars, data]);
-//           } else {
-//              alert('¡Personaje ya agregado!');
-//           }
-//        } else {
-//          alert('¡No hay personajes con este ID!');
-//        }
-//      });
-//  }
+// DONE 8) random character.
 // 
 // 9) error 404 for not found route.
 // 
 // 10) log out redirects to form.
 // 
-// 11) close button removes card from fav component too.
+// ???? 11) close button removes card from fav component too. 
 //  
 // DONE 12) Nav margin-top is being added OUTSIDE the body element, unnecessary scroll bar on the right side.
 //      OPT 1: remove margin, margin-top, affected components: App.css, SearchBar.jsx

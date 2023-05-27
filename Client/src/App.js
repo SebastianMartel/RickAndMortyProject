@@ -9,6 +9,7 @@ import About from './components/About/About'
 import Detail from './components/Detail/Detail'
 import Favourites from './components/Favourites/Favourites';
 import Forms from './components/Forms/Forms';
+import Error from './components/Error404/Error';
 
 import BackgroundPortal from './Img/BackgroundPortal.jpg'
 import AboutBackground from './Img/AboutBackground.png'
@@ -71,9 +72,9 @@ function App() {
    }
 
    const addRandom = () => {
-      const randomNumber = Math.floor(Math.random() * 826) + 1;
+      const randomId = Math.floor(Math.random() * 826) + 1;
 
-      axios(`https://rickandmortyapi.com/api/character/${randomNumber}`)
+      axios(`https://rickandmortyapi.com/api/character/${randomId}`)
       .then(({ data }) => {
          if (data.name) {
             const notFound = characters.find((char) => char.id === data.id);
@@ -115,7 +116,7 @@ function App() {
 
       }
     }, [location.pathname]);
-  
+   
 
    return (
       <div className='App'>
@@ -124,10 +125,11 @@ function App() {
          }
          <Routes> {/* Contains all the routes*/} {/* And Route indicates in what path the element should be rendered*/}
             <Route exact path = '/' element = {<Forms login = {login}/>}/>
-            <Route path = '/home' element = {<Cards characters = {characters} id = {characters.id} onClose = {onClose}/>}/>
+            <Route path = '/home' element = {<Cards characters = {characters} onClose = {onClose}/>}/> {/* REMOVED id = {characters.id} */}
             <Route exact path = '/about' element = {<About/>}/>
             <Route path = '/detail/:id' element = {<Detail characters = {characters}/>}/> {/*dynamic path will always match the path that is being used, and so, it will always render the elment.*/}
-            <Route path = '/favourites' element = {<Favourites/>}/>
+            <Route path = '/favourites' element = { <Favourites />}/>
+            <Route path = '*' element = { <Error/> }/> {/*Not working, only with NavLink to:'...' */}
          </Routes> {/*If it doesn't match, the element won't be rendered, it will only be rendered in the specified path. E.g. '/detail/id' => Won't render anything, since I didn't ñink any element to that path yet*/}
       </div> // Now, if I use dynamic, it will match the path on the card element : <NavLink to = {`/detail/${id}`}> When. I click in the element affected by this NavLink, it will change the URL to detail/(and the id).
       // Then, Route path will take this id value and assign it after the colon, so it looks like: /detail/1 (for example). If I change the element to : <NavLink to = {`/detail/card`}>, then the dynamic path will take card as value.
