@@ -25,8 +25,26 @@
 // 6) add a functionality that shows all fav characters in the select filter.
 // 
 // 7) not repeat characters.
+// const exists = characters.find((char) => char.id === data.id)
 // 
 // 8) random character.
+//       const addRandom = () => {
+//     const randomNumber = Math.floor(Math.random() * 826) + 1;
+
+//     axios(`https://rickandmortyapi.com/api/character/${randomNumber}`)
+//     .then(({ data }) => {
+//        if (data.name) {
+//           const notFound = characters.find((char) => char.id === data.id);
+//           if (!notFound) {
+//              setCharacters((oldChars) => [...oldChars, data]);
+//           } else {
+//              alert('¡Personaje ya agregado!');
+//           }
+//        } else {
+//          alert('¡No hay personajes con este ID!');
+//        }
+//      });
+//  }
 // 
 // 9) error 404 for not found route.
 // 

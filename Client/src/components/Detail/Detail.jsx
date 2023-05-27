@@ -33,7 +33,8 @@ export default function Detail () {
     const {id} = useParams()
 
     useEffect(() => {
-        axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+        axios(`http://localhost:3001/rickandmorty/character/${id}`)
+        .then(({ data }) => {
            if (data.name) {
               setCharacter(data);
            } else {
@@ -51,7 +52,7 @@ export default function Detail () {
                 <p>Status: {character?.status}</p>
                 <p>Specie: {character?.species}</p>
                 <p>Gender: {character?.gender}</p>
-                <p>Origin: {character?.origin}</p>
+                <p>Origin: {character?.origin?.name}</p>
             </TextDiv>
         </MainDiv>
     )

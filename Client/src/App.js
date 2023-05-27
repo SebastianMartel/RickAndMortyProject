@@ -28,10 +28,19 @@ function App() {
    const location = useLocation()
 
    const login = (userData) => {
-      if (userData.email === email && userData.password === password) {
-         setAccess(true);
-         Navigate('/home')
-      }
+      // PREV:
+      // if (userData.email === email && userData.password === password) {
+      //    setAccess(true);
+      //    Navigate('/home')
+      // }
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`)
+      .then(({ data }) => {
+         const { access } = data;
+         setAccess(access);
+         access && Navigate('/home');
+      });
    }
 
    // const logout = () => {} LogOut
@@ -45,7 +54,12 @@ function App() {
       axios(`http://localhost:3001/rickandmorty/character/${id}`)
       .then(({ data }) => {
          if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
+            const exists = characters.find((char) => char.id === data.id)
+            if(!exists) {
+               setCharacters((oldChars) => [...oldChars, data]);
+            } else {
+               alert('Personaje ya agregado!')
+            }
          } else {
             alert('¡No hay personajes con este ID!');
          }
@@ -54,6 +68,24 @@ function App() {
          console.error(error);
          alert('¡No hay personajes con este ID!');
        });
+   }
+
+   const addRandom = () => {
+      const randomNumber = Math.floor(Math.random() * 826) + 1;
+
+      axios(`https://rickandmortyapi.com/api/character/${randomNumber}`)
+      .then(({ data }) => {
+         if (data.name) {
+            const notFound = characters.find((char) => char.id === data.id);
+            if (!notFound) {
+               setCharacters((oldChars) => [...oldChars, data]);
+            } else {
+               alert('¡Personaje ya agregado!');
+            }
+         } else {
+            alert('¡No hay personajes con este ID!');
+         }
+      });
    }
 
    useEffect(() => {
@@ -88,7 +120,7 @@ function App() {
    return (
       <div className='App'>
          {
-            location.pathname !== '/' && <Nav onSearch = {onSearch}/>
+            location.pathname !== '/' && <Nav onSearch = {onSearch} addRandom = {addRandom}/>
          }
          <Routes> {/* Contains all the routes*/} {/* And Route indicates in what path the element should be rendered*/}
             <Route exact path = '/' element = {<Forms login = {login}/>}/>

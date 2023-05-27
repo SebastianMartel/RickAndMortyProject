@@ -42,7 +42,7 @@ const StyledButtons = styled.button `
 
 
 
-export default function Nav({ onSearch }) {
+export default function Nav({ onSearch, addRandom }) {
     return (
         <StyledNav>
             <img src = {NavLogo} style = {{margin: '10px'}}></img>
@@ -57,6 +57,8 @@ export default function Nav({ onSearch }) {
             </NavLink>
 
             <SearchBar onSearch={onSearch} />
+
+            <button onClick = {addRandom}>?</button>
         </StyledNav>
     );
  }
