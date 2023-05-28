@@ -26,7 +26,7 @@ function App() {
    const email = 'email@email.com'
    const password = 'password99'
    const Navigate = useNavigate()
-   const location = useLocation()
+   const { pathname } = useLocation()
 
    const login = (userData) => {
       // PREV:
@@ -95,7 +95,7 @@ function App() {
 
 
    useEffect(() => {
-      if (location.pathname === '/') {
+      if (pathname === '/') {
         document.body.style.backgroundImage = `url(${FormBackgroundBlur})`;
       //   document.body.style.alignItems = 'center';
       //   document.body.style.display = 'flex';
@@ -104,7 +104,7 @@ function App() {
       document.body.style.alignItems = 'center';
       document.body.style.height = '100vh';
       } 
-      else if (location.pathname === '/home' || location.pathname === '/favourites') {
+      else if (pathname === '/home' || pathname === '/favourites') {
          document.body.style.backgroundImage = `url(${BackgroundPortal})`;
          document.body.style.display = 'block';
          document.body.style.height = '96vh';
@@ -115,14 +115,14 @@ function App() {
         document.body.style.height = '96vh';
 
       }
-    }, [location.pathname]);
+    }, [pathname]);
    
 
    return (
       <div className='App'>
          {
-            location.pathname !== '/' && <Nav onSearch = {onSearch} addRandom = {addRandom}/>
-         }
+            pathname !== '/' && <Nav onSearch = {onSearch} addRandom = {addRandom}/>
+         } {/*Will it work? */}
          <Routes> {/* Contains all the routes*/} {/* And Route indicates in what path the element should be rendered*/}
             <Route exact path = '/' element = {<Forms login = {login}/>}/>
             <Route path = '/home' element = {<Cards characters = {characters} onClose = {onClose}/>}/> {/* REMOVED id = {characters.id} */}

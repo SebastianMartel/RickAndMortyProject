@@ -62,8 +62,8 @@ export default function About () {
         <MainDiv>
             <DivBox>
                 <DivText>
-                    <Title>Hello World! I'm Sebastian Menacho,</Title>
-                    <Text>I'm a Full Stack developer based in Lima, Peru.</Text>
+                    <Title>Hello World! I'm Sebastian,</Title>
+                    <Text>I'm a Full Stack developer.</Text>
                 </DivText>
                 <DivImg>
                     <img src = {image} alt = 'image'></img>
