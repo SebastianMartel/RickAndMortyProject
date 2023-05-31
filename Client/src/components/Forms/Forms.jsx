@@ -1,7 +1,8 @@
-import { useState, useRef } from "react"
-import validation from "../Validation/Validation"
-import styled from "styled-components"
+import { useState } from "react"
 
+import validation from "../Validation/Validation"
+
+import styled from "styled-components"
 import FormPortrait from '../../Img/FormPortrait.png'
 
 
@@ -63,7 +64,6 @@ const StyledFormData = styled.form `
 `
 
 const StyledInput = styled.input `
-
     padding: 8px;
     border-radius: 5px;
     margin: 10px 0;
@@ -85,7 +85,6 @@ const StyledError = styled.p `
 `
 
 const StyledButton = styled.button `
-
     padding: 10px;
     margin-top: 10px;
     font-family: ;
@@ -117,8 +116,9 @@ const StyledButton = styled.button `
     // }
     // add: onClick = {handleInputClick}, to email and password input
     
-    export default function Forms ({login}) {
+    export default function Forms ( { login } ) {
         
+
         const [userData, setUserData] = useState({
             email: '',
             password: ''
@@ -126,26 +126,26 @@ const StyledButton = styled.button `
         
         const [errors, setErrors] = useState({})
         
-        const handleChange = (event) => {
-            console.log(event)
-            setUserData({
-                ...userData,
-                [event.target.name] : event.target.value            
-            })
-            setErrors(validation({
-                ...userData,
-                [event.target.name] : event.target.value
-            }))
-        }
+
+            const handleChange = (event) => {
+                console.log(event)
+                setUserData({
+                    ...userData,
+                    [event.target.name] : event.target.value            
+                })
+                setErrors(validation({
+                    ...userData,
+                    [event.target.name] : event.target.value
+                }))
+            }
         
             const handleSubmit = (event) => {
                 event.preventDefault()
                 login(userData)
             }
         
-            
             const hasErrors = Object.keys(errors).length;
-            
+
             const handleValidation = () => {
                 if (hasErrors) return true;
                 else return false
@@ -154,6 +154,7 @@ const StyledButton = styled.button `
             const handleInputs = () => {
                 return Object.values(userData).some(value => value.length === 0);
             }
+
 
     return (
         <MainDiv>
@@ -172,13 +173,11 @@ const StyledButton = styled.button `
 
                     <StyledFormData>
 
-                        <StyledInput name='email' value={userData.email} type='text' onChange={handleChange} placeholder='Email' />
+                        <StyledInput name = 'email' value = {userData.email} type = 'text' onChange = {handleChange} placeholder = 'Email' />
                             {errors.email && <StyledError>{errors.email}</StyledError>}
 
-
-                        <StyledInput name='password' value={userData.password} type='text' onChange={handleChange} placeholder='Password' />
+                        <StyledInput name = 'password' value = {userData.password} type = 'text' onChange = {handleChange} placeholder = 'Password' />
                             {errors.password && <StyledError>{errors.password}</StyledError>}
-
 
                         <StyledButton hasErrors = {handleValidation()} hasNotCompleted = {handleInputs()}>LOG IN</StyledButton>
 

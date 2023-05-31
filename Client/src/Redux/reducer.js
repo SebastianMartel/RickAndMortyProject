@@ -1,11 +1,13 @@
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from "./actions"
+import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from "./actions";
 
-const initialState = {
-    myFavourites: [],
-    allFavCharacters: []
-}
 
-const reducer = (state = initialState, {type, payload}) => {
+    const initialState = {
+        myFavourites: [],
+        myFavouritesCopy: []
+    }
+
+
+const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case ADD_FAV:
             return {
@@ -15,32 +17,38 @@ const reducer = (state = initialState, {type, payload}) => {
                 // allFavCharacters: [...state.allFavCharacters, payload]
                 ...state, 
                 myFavourites: payload, 
-                allFavCharacters: payload
+                myFavouritesCopy: payload
             }
         case REMOVE_FAV:
             return {
                 // ...state,
-                // myFavourites: state.myFavourites.filter((fav) => fav.id !== payload)
+                // myFavourites: state.myFavourites.filter((fav) => fav.id !== parseInt(payload))
                 ...state, 
-                myFavourites: payload
+                myFavourites: payload,
+                myFavouritesCopy: payload
             }
         case FILTER:
+            const myFavouritesCopyFiltered = state.myFavouritesCopy.filter((fav) => fav.gender === payload)
             return {
                 ...state,
-                myFavourites: state.allFavCharacters.filter((char) => char.gender === payload)
+                myFavourites:
+                payload === 'All'
+                ? [...state.myFavouritesCopy]
+                : myFavouritesCopyFiltered // could be assigned directly to save memory.
             }
         case ORDER:
-            const allFavCharactersCopy = [...state.allFavCharacters]
+            const myFavouritesCopyCopy = [...state.myFavouritesCopy]
             return {
                 ...state,
                 myFavourites: 
                     payload === 'A' 
-                    ? allFavCharactersCopy.sort((a,b)=> a.id - b.id)
-                    : allFavCharactersCopy.sort((a,b)=> b.id - a.id)
-
+                    ? myFavouritesCopyCopy.sort((a,b)=> a.id - b.id)
+                    : myFavouritesCopyCopy.sort((a,b)=> b.id - a.id)
             }
         default:
-            return state
+            return {
+                ...state
+            }
     }
 }
 

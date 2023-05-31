@@ -1,8 +1,9 @@
 import axios from "axios"
-import { useParams } from "react-router-dom" // access to the url dynamic parameter. Needs to match the dynamic parameter.
 import { useState , useEffect} from "react"
+import { useParams } from "react-router-dom" // access to the url dynamic parameter. Needs to match the dynamic parameter.
 
 import styled from "styled-components"
+
 
 const MainDiv = styled.div `
     display: flex;
@@ -28,9 +29,12 @@ const TextDiv = styled.div `
 
 export default function Detail () {
 
+
     const [character, setCharacter] = useState({})
 
+    
     const {id} = useParams()
+
 
     useEffect(() => {
         axios(`http://localhost:3001/rickandmorty/character/${id}`)
@@ -42,7 +46,8 @@ export default function Detail () {
            }
         });
         return setCharacter({});
-     }, [id]); // [id], prevents from calling useEffect as an infinite loop.
+    }, [id]); // [id], prevents from calling useEffect causing an infinite loop.
+    
     
     return (
         <MainDiv>

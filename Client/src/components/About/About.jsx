@@ -1,5 +1,7 @@
 import styled from "styled-components"
+
 import image from '../../Img/logo192.png'
+
 
 const MainDiv = styled.div `
     display: flex;
@@ -58,6 +60,7 @@ const DivImg = styled.div `
 
 
 export default function About () {
+    
     return (
         <MainDiv>
             <DivBox>
@@ -66,7 +69,7 @@ export default function About () {
                     <Text>I'm a Full Stack developer.</Text>
                 </DivText>
                 <DivImg>
-                    <img src = {image} alt = 'image'></img>
+                    <img src = {image} alt = 'skills'></img>
                     <img alt = 'skills'></img>
                 </DivImg>
             </DivBox>

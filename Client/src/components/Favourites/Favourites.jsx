@@ -1,9 +1,10 @@
-import Card from "../Card/Card"
 import { useState } from "react"
-import { connect } from "react-redux"
-import { useDispatch } from "react-redux"
+import { connect, useDispatch } from "react-redux"
+
 import { filterCards, orderCards } from "../../Redux/actions"
+
 import styled from "styled-components"
+import Card from "../Card/Card"
 
 
 const FilterDiv = styled.div `
@@ -43,15 +44,18 @@ const Options = styled.option `
     font-size: 15px
 `
 
-const Favourites = ({myFavourites}) => {
+
+const Favourites = ( { myFavourites, onClose } ) => {
+
 
     const [aux, setAux] = useState(false)
 
     const dispatch = useDispatch()
 
+
         const handleOrder = (event) => {
             dispatch(orderCards(event.target.value))
-            setAux(true) 
+            setAux(!aux) 
         }
 
         const handleFilter = (event) => {
@@ -63,6 +67,7 @@ const Favourites = ({myFavourites}) => {
             else if(status === 'Dead') return false
         }
   
+
     return (
         <>
             <FilterDiv>
@@ -71,6 +76,7 @@ const Favourites = ({myFavourites}) => {
                     <Options value = 'D'>Descendente</Options>
                 </StyledSelect>
                 <StyledSelect onChange = {handleFilter}>
+                    <Options value = 'All'>Show all</Options>
                     <Options value = 'Male'>Male</Options>
                     <Options value = 'Female'>Female</Options>
                     <Options value = 'Genderless'>Genderless</Options>
@@ -80,21 +86,23 @@ const Favourites = ({myFavourites}) => {
 
             <FavCardBox>
             {
-                myFavourites?.map(({id, name, status, species, gender, image, onClose}, idx) => {
+                myFavourites?.map(({ id, name, status, species, gender, image }) => {
                     const characterStatus = handleStatus(status)
 
-                    return (    
-                        <Card
-                            key = {idx}
-                            id = {id}
-                            name = {name}
-                            species = {species}
-                            gender = {gender}
-                            image = {image}
-                            onClose = {onClose}
-                            handleFavCharStatus = {characterStatus}
-                        />
-                    
+                    return (
+                        <>
+                            <Card
+                                key = {id}
+                                id = {id}
+                                name = {name}
+                                species = {species}
+                                gender = {gender}
+                                image = {image}
+                                onClose = {onClose}
+                                handleFavCharStatus = {characterStatus}
+                            />
+                            <p>this is : {typeof(onClose)}</p>
+                        </>
                     )
                 })
             }
@@ -102,6 +110,7 @@ const Favourites = ({myFavourites}) => {
         </>
     )
 }
+
 
 const mapStateToProps = (state) => {
     return {

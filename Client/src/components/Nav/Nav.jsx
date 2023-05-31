@@ -1,9 +1,11 @@
-import styled from "styled-components";
-import SearchBar from "../SearchBar/SearchBar";
 import { NavLink } from "react-router-dom";
 
+import SearchBar from "../SearchBar/SearchBar";
+
+import styled from "styled-components";
 import NavLogo from '../../Img/NavLogo.png'
 import NavBackground from '../../Img/NavOp1.png'
+
 
 const StyledNav = styled.nav `
     /* position: fixed;*/
@@ -41,8 +43,7 @@ const StyledButtons = styled.button `
 `
 
 
-
-export default function Nav({ onSearch, addRandom }) {
+export default function Nav( { onSearch, addRandom, logOut } ) {
     return (
         <StyledNav>
             <img src = {NavLogo} style = {{margin: '10px'}} alt = 'Navigation Bar'></img>
@@ -59,6 +60,7 @@ export default function Nav({ onSearch, addRandom }) {
             <SearchBar onSearch = {onSearch} />
 
             <button onClick = {addRandom}>?</button>
+            <button onClick = {logOut}>LOG OUT</button>
         </StyledNav>
     );
  }
