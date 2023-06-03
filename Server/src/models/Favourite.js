@@ -5,14 +5,14 @@ module.exports = (sequelize) => {
       id: {
          type: DataTypes.INTEGER,
          allowNull: false,
-         primaryKey: true
+         primaryKey: true,
       },
       name: {
          type: DataTypes.STRING,
          allowNull: false
       },
       status: {
-         type: DataTypes.ENUM('Alive', 'Dead', 'Unknown'),
+         type: DataTypes.ENUM ('Alive', 'Dead', 'unknown'),
          allowNull: false
       },
       species: {
@@ -31,5 +31,6 @@ module.exports = (sequelize) => {
          type: DataTypes.STRING,
          allowNull: false
       }
+
    }, { timestamps: false });
 };
