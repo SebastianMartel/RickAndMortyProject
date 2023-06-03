@@ -35,7 +35,7 @@ function App( { removeFav } ) {
 
    useEffect(() => {
       !access && Navigate('/')
-   }, [access, Navigate]) // added 'Navigate' to the array. what for tho? Right... ESlint suggestion
+   }, [access]) // added 'Navigate' to the array. what for tho? Right... ESlint suggestion
    
    useEffect(() => {
       if (pathname === '/') {
@@ -61,21 +61,47 @@ function App( { removeFav } ) {
     }, [pathname]);
 
 
-      const login = (userData) => {
-         // PREV:
-         // if (userData.email === email && userData.password === password) {
-         //    setAccess(true);
-         //    Navigate('/home')
-         // }
-         const { email, password } = userData;
-         const URL = 'http://localhost:3001/rickandmorty/login/';
-         axios(URL + `?email=${email}&password=${password}`)
-         .then(({ data }) => {
-            const { access } = data;
-            setAccess(access);
-            access && Navigate('/home');
-         });
+   // const login = (userData) => {
+   //    // PREV:
+   //    // if (userData.email === email && userData.password === password) {
+   //    //    setAccess(true);
+   //    //    Navigate('/home')
+   //    // }
+   //    // SECOND:
+   //    const { email, password } = userData;
+   //    const URL = 'http://localhost:3001/rickandmorty/login/';
+   //    axios(URL + `?email=${email}&password=${password}`)
+   //    .then(({ data }) => {
+   //       const { access } = data;
+   //       setAccess(access);
+   //       access && Navigate('/home');
+   //    });
+   // }
+    async function login(userData) {
+      try {
+        const { email, password } = userData;
+        const URL = "http://localhost:3001/rickandmorty/login/";
+        const { data } = await axios(URL + `?email=${email}&password=${password}`);
+        const { access } = data;
+        setAccess(access);
+        access && Navigate("/home");
+      } catch (error) {
+        console.log(error.message);
       }
+    }
+      // THIRD:
+      //    const { email, password } = userData;
+      //    const URL = 'http://localhost:3001/rickandmorty/login/';
+      //    axios.post(URL, { email, password })
+      //       .then(({ data }) => {
+      //          const { access } = data;
+      //          setAccess(access);
+      //          access && Navigate('/home');
+      //       })
+      //       .catch((error) => {
+      //          console.error(error);
+      //       });
+      // }
 
       const logOut = () => {
          setAccess(false)
