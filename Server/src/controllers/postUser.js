@@ -16,7 +16,7 @@ const postUser = async (req, res) => {
             }
         })
 
-            return res.status(200).json(user)
+            return res.status(200).json(user) // first elements is the user object and the second represents whether a new user has been created or not
     }
 
     catch (error) {

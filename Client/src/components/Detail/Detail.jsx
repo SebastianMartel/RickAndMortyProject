@@ -33,7 +33,7 @@ export default function Detail () {
     const [character, setCharacter] = useState({})
 
     
-    const {id} = useParams()
+    const { id } = useParams()
 
 
     useEffect(() => {

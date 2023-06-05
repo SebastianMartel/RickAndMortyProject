@@ -63,8 +63,8 @@ const Favourites = ( { myFavourites, onClose } ) => {
         }
 
         const handleStatus = (status) => {
-            if(status === 'Alive') return true
-            else if(status === 'Dead') return false
+            if (status === 'Alive') return true
+            else if (status === 'Dead') return false
         }
   
 
@@ -86,18 +86,20 @@ const Favourites = ( { myFavourites, onClose } ) => {
 
             <FavCardBox>
             {
-                myFavourites?.map(({ id, name, status, species, gender, image }) => {
+                myFavourites?.map(({ id, name, origin, status, species, gender, image }) => {
                     const characterStatus = handleStatus(status)
-
+// added origin in the map and status in the render
                     return (
                         <>
                             <Card
                                 key = {id}
                                 id = {id}
                                 name = {name}
+                                origin = {origin}
+                                status = {status}
+                                image = {image}
                                 species = {species}
                                 gender = {gender}
-                                image = {image}
                                 onClose = {onClose}
                                 handleFavCharStatus = {characterStatus}
                             />

@@ -116,13 +116,13 @@ export function Card ( { id, name, status, species, gender, origin, image, onClo
             removeFav(id)
          } else { /* Changed the conditional */
             setIsFav(true);
-            addFav({ id, name, status, species, gender, origin, image }) // addFav can't pass propperly the function onClose to each card.
-         }
+            addFav({ id, name, status, species, gender, origin: origin.name, image }) // addFav can't pass propperly the function onClose to each card.
+         } // origin -> origin: origin.name
       }
   
       const handleStatus = () => {
-         if(status === 'Alive') return true
-         else if(status === 'Dead') return false
+         if (status === 'Alive') return true
+         else if (status === 'Dead') return false
       }
 
 
